@@ -1,0 +1,15 @@
+# Ignore Logs
+logs
+*.log
+
+
+# The file containing environment variables 
+.env
+
+
+# Ignore IDE specific files
+.vscode/
+
+
+# Virtual environmen : FastApi
+fastapi_concepts/.venv-fastapi_concepts/
