@@ -1,0 +1,19 @@
+flake8
+autopep8
+pylint
+python-dotenv   #for loading environment variables
+pip-tools
+
+fastapi
+uvicorn # ASGI server
+pydantic[email] # Email Validator
+
+# for database
+sqlalchemy
+psycopg2
+python-multipart    # Used for OAuth2 : OAuth2 uses "form data" for sending the username and password
+
+
+# for testing
+pytest
+requests

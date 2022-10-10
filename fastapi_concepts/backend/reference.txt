@@ -1,0 +1,28 @@
+Official Docs: https://fastapi.tiangolo.com/tutorial/first-steps/
+API Docs: http://127.0.0.1:8000/docs#
+API Redocs: http://127.0.0.1:8000/redoc
+OpenAPI schema: http://127.0.0.1:8000/openapi.json
+Pydanic: https://pydantic-docs.helpmanual.io/
+
+
+Blog : https://christophergs.com/tutorials/ultimate-fastapi-tutorial-pt-1-hello-world/
+Github: https://github.com/ChristopherGS/ultimate-fastapi-tutorial
+
+Complete Blog: https://www.fastapitutorial.com/blog/initial-configuration/
+
+MongoDB: https://medium.com/analytics-vidhya/fastapi-the-modern-age-api-framework-for-pythonista-4b2cd1e6652
+
+ToDo: https://www.toptal.com/python/build-high-performing-apps-with-the-python-fastapi-framework
+
+
+
+
+Github:
+https://pre-commit.com/#2-add-a-pre-commit-configuration
+
+Exernal load data: https://towardsdatascience.com/fastapi-cloud-database-loading-with-python-1f531f1d438a
+
+
+almberic: educative.io/answers/how-to-use-postgresql-database-in-fastapi
+
+test https://testdriven.io/blog/fastapi-crud/
