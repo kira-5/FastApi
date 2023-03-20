@@ -11,8 +11,7 @@ router = APIRouter()
 
 @router.post("/", response_model=schemas.User, status_code=200)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)) -> dict:
-    db_user = S.get_user_by_email(db, email=user.email)
-    if db_user:
+    if db_user := S.get_user_by_email(db, email=user.email):
         raise HTTPException(status_code=400, detail="Email already registered")
     return S.create_user(db=db, user=user)
 
@@ -25,8 +24,7 @@ def fetch_users(
     limit: int = 100,
     db: Session = Depends(get_db)
 ) -> list:
-    users = S.get_users(db, skip=skip, limit=limit)
-    return users
+    return S.get_users(db, skip=skip, limit=limit)
 
 
 @router.get("/{user_id}", response_model=schemas.ShowUser, status_code=200)
@@ -59,9 +57,8 @@ def update_user(
     user_id: int | None = Query(default=Required, include_in_schema=False),
     db: Session = Depends(get_db)
 ) -> dict:
-    db_user = S.update_user_by_id(
-        db=db, user=user, user_id=user_id)
-    if not db_user:
+    if db_user := S.update_user_by_id(db=db, user=user, user_id=user_id):
+        return {"msg": f"Job id {db_user} Successfully updated!"}
+    else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Job with id {user_id} not found")
-    return {"msg": f"Job id {db_user} Successfully updated!"}

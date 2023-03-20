@@ -11,10 +11,7 @@ IS_ERROR_LOGGER = True
 
 
 def configure_logging():
-    log_config = uvicorn.config.LOGGING_CONFIG
-    # log_config["formatters"]["access"]["fmt"] = "%(asctime)s - %(levelname)s - %(message)s"
-    # log_config["formatters"]["default"]["fmt"] = "%(asctime)s - %(levelname)s - %(message)s"
-    return log_config
+    return uvicorn.config.LOGGING_CONFIG
 
 
 def get_logger(module_name, log_name=None, msg=None):  # type: ignore
