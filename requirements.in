@@ -7,3 +7,7 @@ pip-tools
 fastapi
 uvicorn # ASGI server
 pydantic[email] # Email Validator
+
+psycopg2
+asyncpg
+asyncio

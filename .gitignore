@@ -14,4 +14,5 @@ logs
 
 
 # Virtual environmen : FastApi
-fastapi_concepts/.venv-fastapi/
+*.venv
+*.python-version
