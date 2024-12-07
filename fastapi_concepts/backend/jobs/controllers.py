@@ -10,8 +10,7 @@ router = APIRouter()
 
 @router.post("/", response_model=schemas.Job, status_code=200)
 def create_job(job: schemas.JobCreate, db: Session = Depends(get_db)) -> dict:
-    db_user = S.get_job_by_title(db, title=job.title)
-    if db_user:
+    if db_user := S.get_job_by_title(db, title=job.title):
         raise HTTPException(
             status_code=400, detail="Job Title already registered")
     return S.create_job(db=db, job=job)
@@ -50,11 +49,11 @@ def delete_job(
     job_id: int | None = Query(default=Required, include_in_schema=False),
     db: Session = Depends(get_db)
 ) -> dict:
-    db_job = S.delete_job_by_id(job_id=job_id, db=db)
-    if not db_job:
+    if db_job := S.delete_job_by_id(job_id=job_id, db=db):
+        return {"msg": f"Job id {db_job} Successfully deleted."}
+    else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Job with id {job_id} not found")
-    return {"msg": f"Job id {db_job} Successfully deleted."}
 
 
 
@@ -65,9 +64,10 @@ def update_job(
     db: Session = Depends(get_db)
 ) -> dict:
     current_user = 1
-    db_job = S.update_job_by_id(
-        db=db, job=job, job_id=job_id, owner_id=current_user)
-    if not db_job:
+    if db_job := S.update_job_by_id(
+        db=db, job=job, job_id=job_id, owner_id=current_user
+    ):
+        return {"msg": f"Job id {db_job} Successfully updated!"}
+    else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Job with id {job_id} not found")
-    return {"msg": f"Job id {db_job} Successfully updated!"}
